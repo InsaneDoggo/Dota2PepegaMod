@@ -10,6 +10,8 @@ require('settings')
 require('events')
 -- filters.lua
 require('filters')
+-- dev_debug_menu.lua
+require('dev_debug_menu')
 
 if USE_CUSTOM_ROSHAN then
 	require('components/roshan/init')
@@ -206,6 +208,10 @@ function barebones:InitGameMode()
 
 	-- Increase/decrease maximum item limit per hero
 	Convars:SetInt('dota_max_physical_items_purchase_limit', 64)
+
+	
+	--  ========= Custom Non Barebones Stuff ============
+	DevDebugMenu:Init()
 end
 
 -- This function is called as the first player loads and sets up the game mode parameters
