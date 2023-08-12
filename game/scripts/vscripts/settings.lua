@@ -4,15 +4,15 @@ USE_DEBUG = false                  -- Should we print statements on almost every
 ENABLE_HERO_RESPAWN = true         -- Should the heroes automatically respawn on a timer or stay dead until manually respawned
 UNIVERSAL_SHOP_MODE = false        -- Should the shops contain all items?
 ALLOW_SAME_HERO_SELECTION = false  -- Should we let people select the same hero as each other
-LOCK_TEAMS = false                 -- Should we Lock (true) or unlock (false) team assignemnt. If team assignment is locked players cannot change teams.
+LOCK_TEAMS = true                 -- Should we Lock (true) or unlock (false) team assignemnt. If team assignment is locked players cannot change teams.
 
-CUSTOM_GAME_SETUP_TIME = 25.0      -- How long should custom game setup last - the screen where players pick a team?
-HERO_SELECTION_TIME = 30.0         -- How long should we let people select their hero? Should be at least 5 seconds.
-HERO_SELECTION_PENALTY_TIME = 30.0 -- How long should the penalty time for not picking a hero last? During this time player loses gold.
+CUSTOM_GAME_SETUP_TIME = 0.0      -- How long should custom game setup last - the screen where players pick a team?
+HERO_SELECTION_TIME = 0.0         -- How long should we let people select their hero? Should be at least 5 seconds.
+HERO_SELECTION_PENALTY_TIME = 0.0 -- How long should the penalty time for not picking a hero last? During this time player loses gold.
 ENABLE_BANNING_PHASE = false       -- Should we enable banning phase? Set to true if "EnablePickRules" is "1" in 'addoninfo.txt'
 BANNING_PHASE_TIME = 20.0          -- How long should the banning phase last? This will work only if "EnablePickRules" is "1" in 'addoninfo.txt'
-STRATEGY_TIME = 20.0               -- How long should strategy time last? Bug: You can buy items during strategy time and it will not be spent!
-SHOWCASE_TIME = 12.0               -- How long should show case time be?
+STRATEGY_TIME = 0.0               -- How long should strategy time last? Bug: You can buy items during strategy time and it will not be spent!
+SHOWCASE_TIME = 0.0               -- How long should show case time be?
 PRE_GAME_TIME = 90.0               -- How long after showcase time should the horn blow and the game start?
 POST_GAME_TIME = 60.0              -- How long should we let people stay around before closing the server automatically?
 TREE_REGROW_TIME = 300.0           -- How long should it take individual trees to respawn after being cut down/destroyed?
@@ -80,7 +80,7 @@ LOSE_GOLD_ON_DEATH = true          -- Should we have players lose the normal amo
 SHOW_ONLY_PLAYER_INVENTORY = false -- Should we allow players to only see their own inventory even when selecting other units?
 DISABLE_STASH_PURCHASING = false   -- Should we prevent players from being able to buy items into their stash when not at a shop?
 DISABLE_ANNOUNCER = false          -- Should we disable the announcer from working in the game?
-FORCE_PICKED_HERO = nil            -- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_axe").  Use nil to allow players to pick their own hero.
+FORCE_PICKED_HERO = npc_dota_hero_axe            -- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_axe").  Use nil to allow players to pick their own hero.
 -- This will not work if "EnablePickRules" is "1" in 'addoninfo.txt'!
 
 ADD_ITEM_TO_HERO_ON_SPAWN = false  -- Add an example item to the picked hero when he spawns?
