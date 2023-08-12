@@ -32,7 +32,8 @@
 ::  1. Validations:
 ::      If any validation fails then execution stops (setps 2,3,4+ will not run)
 ::      P.S. corresponding error messages will be printed to console
-::
+::      
+::      1.0 Verify that some Config variables are actually changed
 ::      1.1 Verify that local "game" exists
 ::      1.2 Verify that local "game" is not SymLink
 ::      1.3 Verify that local "content" exists
@@ -69,7 +70,7 @@ setlocal enabledelayedexpansion
 :: ============================ Validation ============================================
 set HasErrors=0
 
-:: Check "game" dir is not exist in "steam mods dir"
+:: Check that some Config variables are actually changed
 if NOT exist "%PATH_DOTA2_MODS_ROOT%" (
   echo:
   echo Error: "%PATH_DOTA2_MODS_ROOT%" is not exists!
