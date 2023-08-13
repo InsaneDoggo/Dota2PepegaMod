@@ -1,0 +1,146 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	//////////////////////////////////////////////////////////////////
+	// Material System Dependencies
+	//
+	// VConsole will copy these off on behalf of any subtool that hooks up the Material System.
+	//////////////////////////////////////////////////////////////////
+
+	m_MaterialSystemDependencies = 
+	[
+		"animationsystem.dll",
+		"inputsystem.dll",
+		"imemanager.dll",
+		"localize.dll",
+		"materialsystem2.dll",
+		"meshsystem.dll",
+		"particles.dll",
+		"renderingpipelines.dll",
+		"rendersystemdx11.dll",
+		"rendersystemvulkan.dll",
+		"resourcesystem.dll",
+		"scenesystem.dll",
+		"toolscenenodes.dll",
+		"vscript.dll",
+		"vphysics2.dll",
+	]
+
+	m_SubTools =
+	[
+		{
+			m_Name 						= "BugReporterTool"
+			m_MenuString		 		= "Bug Reporter"
+			m_SubToolIconPath 			= "game:tools/images/vconsole/bugreporter.png"
+			m_ToolbarString				= "Bug"
+			m_StatusBarTipString		= "Open the bug reporter."
+			m_CommandString 			= "bug"
+			m_LibraryPath 				= "subtools/bugreporter_subtool.dll"
+			m_AdditionalDependencies	= [ "bugreporter_filequeue.dll" ]
+			m_bRequiresAppConnection 	= false
+		},
+
+		{
+			m_Name 						= "ShowBudgetTool"
+			m_MenuString 				= "Show Budget Nodes"
+			m_SubToolIconPath 			= "game:tools/images/vconsole/showbudget.png"
+			m_ToolbarString				= "VProf"
+			m_StatusBarTipString		= "VProf Tool - Show Budget Nodes"
+			m_LibraryPath 				= "subtools/vprof_subtool.dll"
+			m_bRequiresAppConnection 	= false
+		},
+		
+		{
+			m_Name 						= "SoundViewerTool"
+			m_MenuString 				= "Sound Viewer"
+			m_SubToolIconPath 			= "game:tools/images/vconsole/soundviewer.png"
+			m_ToolbarString				= "Sounds"
+			m_StatusBarTipString		= "Sound Viewer"
+			m_LibraryPath 				= "subtools/soundviewer_subtool.dll"
+			m_bRequiresAppConnection 	= false
+		},
+		
+		{
+			m_Name 						= "NetGraphTool"
+			m_MenuString 				= "Network Graph"
+			m_SubToolIconPath 			= "game:tools/images/vconsole/netgraph.png"
+			m_ToolbarString				= "NetGraph"
+			m_StatusBarTipString		= "Network Graph"
+			m_LibraryPath 				= "subtools/netgraph_subtool.dll"
+			m_bRequiresAppConnection 	= true
+		},
+
+		{
+			m_Name 						= "ConvarHelperTool"
+			m_MenuString 				= "ConVar Helper"
+			m_SubToolIconPath 			= "game:tools/images/vconsole/convarhelpertool.png"
+			m_ToolbarString				= "ConVar"
+			m_StatusBarTipString		= "ConVar Helper"
+			m_CommandString 			= "convarhelper"
+			m_LibraryPath 				= "subtools/convarhelper_subtool.dll"
+			m_bRequiresAppConnection 	= false
+			m_bAllowAutoStart			= true
+		},
+		
+		{
+			m_Name 						= "LaunchAssetBrowserCommand"
+			m_MenuString		 		= "Asset Browser"
+			m_SubToolIconPath 			= "game:tools/images/assetbrowser/appicon.ico"
+			m_ToolbarString				= "Assets"
+			m_StatusBarTipString		= "Open the Asset Browser."
+			m_CommandString				= "assetbrowser"
+			m_bRequiresToolConnection 	= true
+		},
+
+		{
+		    m_Name                      = "Launch" 
+		    m_MenuString                = "Launch"
+		    m_SubToolIconPath           = "game:tools/images/common/control_play.png"
+		    m_ToolbarString             = "Launch"
+		    m_StatusBarTipString        = "Launch"
+		    m_CommandString             = "dota_launch_custom_game pepega_demo template_map"
+		    m_bRequiresToolConnection   = true
+		},
+
+		{
+		    m_Name                      = "Disconnect" 
+		    m_MenuString                = "Disconnect"
+		    m_SubToolIconPath           = "game:tools/images/common/cancel.png"
+		    m_ToolbarString             = "Disconnect"
+		    m_StatusBarTipString        = "Disconnect"
+		    m_CommandString             = "disconnect"
+		    m_bRequiresToolConnection   = true
+		},
+
+
+
+		{
+		    m_Name                      = "Game"
+		    m_MenuString                = "Game"
+		    m_SubToolIconPath           = "game:tools/images/workshopmanager/icon_refresh_activated.png"
+		    m_ToolbarString             = "Game"
+		    m_StatusBarTipString        = "Clear console; Restart game"
+		    m_CommandString             = "clear;restart"
+		    m_bRequiresToolConnection   = true
+		},
+
+		{
+		    m_Name                      = "Scripts" 
+		    m_MenuString                = "Scripts"
+		    m_SubToolIconPath           = "game:tools/images/common/refresh.png"
+		    m_ToolbarString             = "Scripts"
+		    m_StatusBarTipString        = "Scripts"
+		    m_CommandString             = "script_reload"
+		    m_bRequiresToolConnection   = true
+		},
+
+		{
+		    m_Name                      = "Clear" 
+		    m_MenuString                = "Clear"
+		    m_SubToolIconPath           = "game:tools/images/common/clear_list_sm.png"
+		    m_ToolbarString             = "Clear"
+		    m_StatusBarTipString        = "Clear"
+		    m_CommandString             = "clear"
+		    m_bRequiresToolConnection   = true
+		},
+	]
+}

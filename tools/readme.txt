@@ -1,0 +1,1 @@
+1. sdk_vconsole_subtools - backup of VConsole customization config. Valve's updates may reset this file.
