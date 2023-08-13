@@ -4,8 +4,11 @@ if not DevDebugMenu then
 else
     -- Script Is Reloading
     print("[DevDebugMenu] Script Is Reloading. Sync Panorama")
-    -- Sync Panorama UI in case if Buttons were changed    
-    DevDebugMenu:InitUIForAll()
+    -- One Frame delay to let GetDebugButtonNames() be updated
+    Timers:CreateTimer(function()
+        -- Sync Panorama UI in case if Buttons were changed
+        DevDebugMenu:InitUIForAll()       
+    end)
 end
 
 function DevDebugMenu:Init()
