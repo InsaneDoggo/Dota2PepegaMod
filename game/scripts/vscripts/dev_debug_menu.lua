@@ -44,20 +44,57 @@ end
 -- ================================ Debug Actions ========================================
 function DevDebugMenu:GetDebugButtonNames()
     return {
-        { callbackFunctionName = "OnClickDebugButton1", label = "Do X" },
-        { callbackFunctionName = "OnClickDebugButton2", label = "Do Y" },
-        { callbackFunctionName = "OnClickDebugButton3", label = "Pepega" }
+        { callbackFunctionName = "OnClickDebugButton1", label = "Run Http Request" },
+        { callbackFunctionName = "OnClickDebugButton2", label = "Print System Time" },
+        { callbackFunctionName = "OnClickDebugButton3", label = "-" }
     }
 end
 
 function DevDebugMenu:OnClickDebugButton1()
-    print("On Click Debug Button 1")
+    DevDebugMenu:DemoHttpRequest()
 end
 
 function DevDebugMenu:OnClickDebugButton2()
-    print("On Click Debug Button 2")
+    print("SystemTimeMS: ".. GetSystemTimeMS())
 end
 
 function DevDebugMenu:OnClickDebugButton3()
-    print("On Click Debug Button 3")
+        
+end
+
+
+function DevDebugMenu:DemoHttpRequest()
+	print("Start DemoHttpRequest")
+
+    -- url - just random open api that returns small JSON response
+    -- you can open it in a browser (e.g. chrome) to see expected result
+    local url = "https://jsonplaceholder.typicode.com/todos/1"
+	-- Google: "REST API methods"
+    local method = "GET"
+
+    local requestHandle = CreateHTTPRequest(method, url)
+    -- headers contains additional information about the request/response
+    -- more info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+	requestHandle:SetHTTPRequestHeaderValue("Content-Type", "application/json;charset=UTF-8")
+	
+    local timeStartMS = GetSystemTimeMS()
+    -- callback. see description of "Send" function below.
+	local callbackFunction = function(response)
+        local timeSpentMS = GetSystemTimeMS() - timeStartMS
+        print("Http Response: " .. response.StatusCode)		
+        -- Google: List of HTTP status codes
+        -- 2xx - success
+        -- 4xx - client errors
+        -- 5xx - server errors
+        if response.StatusCode == 200 then
+			print(response.Body)
+		end
+
+        print(string.format("[Debug] Time Spent: %.2f ms", timeSpentMS))
+	end
+    
+    -- Send is asynchronous i.e. it needs time for data(packets) to reach server
+    -- and return back to client. When we(engine) recevie response, function, that we had put 
+    -- as a parameter into requestHandle:Send() will be called.
+    requestHandle:Send(callbackFunction)
 end
