@@ -219,7 +219,7 @@ pip-log.txt
 #############
 #  DOTA 2
 #############
-*.vmap
+#*.vmap
 *.vpk
 *.vpcf_c
 *.vsnd_c
