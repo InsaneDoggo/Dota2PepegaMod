@@ -229,7 +229,7 @@ end
 -- A player has reconnected to the game. This function can be used to repaint Player-based particles or change state as necessary
 function barebones:OnPlayerReconnect(keys)
 	DebugPrint("[BAREBONES] A Player has reconnected.")
-	--PrintTable(keys)
+	PrintTable(keys)
 
 	local new_state = GameRules:State_Get()
 	if new_state > DOTA_GAMERULES_STATE_HERO_SELECTION then
@@ -599,7 +599,7 @@ end
 -- This function is called once when the player fully connects and becomes "Ready" during Loading
 function barebones:OnConnectFull(keys)
 	DebugPrint("[BAREBONES] A Player fully connected.")
-	--PrintTable(keys)
+	PrintTable(keys)
 
 	self:CaptureGameMode()
 
