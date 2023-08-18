@@ -4,7 +4,7 @@
 -- Handle stuff when a player disconnects
 function barebones:OnDisconnect(keys)
 	DebugPrint("[BAREBONES] A Player has disconnected")
-	--PrintTable(keys)
+	PrintTable(keys)
 
 	local name = keys.name
 	local networkID = keys.networkid
@@ -80,7 +80,7 @@ end
 -- An NPC has spawned somewhere in game. This includes heroes
 function barebones:OnNPCSpawned(keys)
 	--DebugPrint("[BAREBONES] A unit Spawned")
-	--PrintTable(keys)
+	PrintTable(keys)
 
 	local npc 
 	if keys.entindex then
@@ -380,7 +380,7 @@ end
 -- A player picked or randomed a hero, it actually happens on spawn (this is sometimes happening before OnHeroInGame).
 function barebones:OnPlayerPickHero(keys)
 	DebugPrint("[BAREBONES] OnPlayerPickHero event")
-	--PrintTable(keys)
+	PrintTable(keys)
 
 	local hero_name = keys.hero
 	local hero_entity
@@ -620,7 +620,7 @@ end
 -- This function is called whenever a player changes their custom team selection during Custom Game Setup 
 function barebones:OnPlayerSelectedCustomTeam(keys)
 	DebugPrint("[BAREBONES] OnPlayerSelectedCustomTeam event")
-	--PrintTable(keys)
+	PrintTable(keys)
 
 	local playerID = keys.player_id
 	local success = keys.success == 1
@@ -657,7 +657,7 @@ end
 -- This function is called whenever any player sends a chat message to team or to All
 function barebones:OnPlayerChat(keys)
 	DebugPrint("[BAREBONES] A Player has used the chat")
-	--PrintTable(keys)
+	PrintTable(keys)
 
 	local team_only = keys.teamonly == 1
 	local userID = keys.userid
