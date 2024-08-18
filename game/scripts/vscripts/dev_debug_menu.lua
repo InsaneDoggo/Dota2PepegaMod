@@ -44,15 +44,6 @@ function DevDebugMenu:OnDebugButtonClickedEvent(event)
     end
 end
 
-function DevDebugMenu:GetDebugButtonNames()
-    return {
-        { callbackFunctionName = "OnClickDebugButton1", label = "Run Http Request" },
-        { callbackFunctionName = "OnClickDebugButton2", label = "Test 2" },
-        { callbackFunctionName = "OnClickDebugButton3", label = "Test 3" },
-        { callbackFunctionName = "OnClickDebugButton4", label = "Test 4" },
-        { callbackFunctionName = "OnClickDebugButton5", label = "Test 5" }
-    }
-end
 
 function DevDebugMenu:GetDebuButtonLabelByFunctionName(functionName)
     local names = DevDebugMenu:GetDebugButtonNames()
@@ -68,18 +59,34 @@ end
 
 
 
-
 -- ================================ Debug Actions ========================================
+function DevDebugMenu:GetDebugButtonNames()
+    return {
+        { callbackFunctionName = "OnClickReloadButton", label = "Clear; Reload" },
+        { callbackFunctionName = "OnClickDebugButton1", label = "Test 1" },
+        { callbackFunctionName = "OnClickDebugButton2", label = "Test 2" },
+        { callbackFunctionName = "OnClickDebugButton3", label = "Test 3" },
+        { callbackFunctionName = "OnClickDebugButton4", label = "Test 4" },
+        { callbackFunctionName = "OnClickDebugButton5", label = "Test 5" }
+    }
+end
+
+function DevDebugMenu:OnClickReloadButton()
+    print(DevDebugMenu:GetDebuButtonLabelByFunctionName('OnClickReloadButton'))
+
+    SendToServerConsole('clear;script_reload')
+end
+
 function DevDebugMenu:OnClickDebugButton1()
     print(DevDebugMenu:GetDebuButtonLabelByFunctionName('OnClickDebugButton1'))
-
-    DevDebugMenu:DemoHttpRequest() 
+    
+    
 end
 
 function DevDebugMenu:OnClickDebugButton2()
     print(DevDebugMenu:GetDebuButtonLabelByFunctionName('OnClickDebugButton2'))
     
-    -- PlayerResource:SetCustomTeamAssignment( 1, DOTA_TEAM_GOODGUYS )
+    
 end
 
 function DevDebugMenu:OnClickDebugButton3()
@@ -106,6 +113,7 @@ function DevDebugMenu:OnClickDebugButton5()
 end
 
 
+-- ======================================= Utils ===============================================
 function DevDebugMenu:DemoHttpRequest()
 	print("Start DemoHttpRequest")
 
