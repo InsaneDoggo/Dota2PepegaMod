@@ -15,12 +15,14 @@
 		"materialsystem2.dll",
 		"meshsystem.dll",
 		"particles.dll",
+		"pulse_system.dll",
 		"renderingpipelines.dll",
 		"rendersystemdx11.dll",
 		"rendersystemvulkan.dll",
 		"resourcesystem.dll",
 		"scenesystem.dll",
 		"toolscenenodes.dll",
+		"v8system.dll",
 		"vscript.dll",
 		"vphysics2.dll",
 	]
@@ -91,13 +93,18 @@
 			m_bRequiresToolConnection 	= true
 		},
 
+
+
+
+
+
 		{
 		    m_Name                      = "Launch" 
 		    m_MenuString                = "Launch"
 		    m_SubToolIconPath           = "game:tools/images/common/control_play.png"
 		    m_ToolbarString             = "Launch"
 		    m_StatusBarTipString        = "Launch"
-		    m_CommandString             = "dota_launch_custom_game pepega_demo template_map"
+		    m_CommandString             = "dota_launch_custom_game Dota2PepegaMod template_map"
 		    m_bRequiresToolConnection   = true
 		},
 
