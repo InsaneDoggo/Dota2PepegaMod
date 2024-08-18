@@ -1,8 +1,15 @@
 -- Generated from template
 
-if CAddonTemplateGameMode == nil then
-	CAddonTemplateGameMode = class({})
+if _G.CAddonTemplateGameMode == nil then
+	_G.CAddonTemplateGameMode = class({})
 end
+
+-- Settings
+_G.USE_DEBUG = true
+
+require('util')
+require('libraries/player_resource')
+require('events')
 
 function Precache( context )
 	--[[
@@ -22,7 +29,18 @@ end
 
 function CAddonTemplateGameMode:InitGameMode()
 	print( "Template addon is loaded." )
-	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
+
+	local gamemode = GameRules:GetGameModeEntity()
+	gamemode:SetThink( "OnThink", self, "GlobalThink", 2 )	
+
+	-- Fast Start	
+	GameRules:LockCustomGameSetupTeamAssignment(true)
+	GameRules:SetHeroSelectionTime(0.0)
+	GameRules:SetShowcaseTime(0.0)
+	GameRules:SetHeroSelectPenaltyTime(0.0)
+	GameRules:SetStrategyTime(0.0)
+
+	ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(CAddonTemplateGameMode, 'OnGameRulesStateChange'), self)
 end
 
 -- Evaluate the state of the game
