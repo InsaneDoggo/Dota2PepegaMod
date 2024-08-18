@@ -7,7 +7,7 @@ else
     -- One Frame delay to let GetDebugButtonNames() be updated
     Timers:CreateTimer(function()
         -- Sync Panorama UI in case if Buttons were changed
-        DevDebugMenu:InitUIForAll()       
+        DevDebugMenu:InitUIForAll()
     end)
 end
 
@@ -44,61 +44,65 @@ function DevDebugMenu:OnDebugButtonClickedEvent(event)
     end
 end
 
--- ================================ Debug Actions ========================================
 function DevDebugMenu:GetDebugButtonNames()
     return {
         { callbackFunctionName = "OnClickDebugButton1", label = "Run Http Request" },
-        { callbackFunctionName = "OnClickDebugButton2", label = "Assign Player 1 to team GoodGuys" },
-        { callbackFunctionName = "OnClickDebugButton3", label = "Assign Player 1 to team BadGuys" },
+        { callbackFunctionName = "OnClickDebugButton2", label = "Test 2" },
+        { callbackFunctionName = "OnClickDebugButton3", label = "Test 3" },
         { callbackFunctionName = "OnClickDebugButton4", label = "Test 4" },
         { callbackFunctionName = "OnClickDebugButton5", label = "Test 5" }
     }
 end
 
+function DevDebugMenu:GetDebuButtonLabelByFunctionName(functionName)
+    local names = DevDebugMenu:GetDebugButtonNames()
+    
+    for _,v in pairs(names) do
+        if (v.callbackFunctionName == functionName) then
+            return v.label
+        end
+    end
+
+    return 'Undefined'
+end
+
+
+
+
+-- ================================ Debug Actions ========================================
 function DevDebugMenu:OnClickDebugButton1()
-    DevDebugMenu:DemoHttpRequest()
+    print(DevDebugMenu:GetDebuButtonLabelByFunctionName('OnClickDebugButton1'))
+
+    DevDebugMenu:DemoHttpRequest() 
 end
 
 function DevDebugMenu:OnClickDebugButton2()
-    print("Assign to GoodGuys")
-    PlayerResource:SetCustomTeamAssignment( 1, DOTA_TEAM_GOODGUYS )
+    print(DevDebugMenu:GetDebuButtonLabelByFunctionName('OnClickDebugButton2'))
+    
+    -- PlayerResource:SetCustomTeamAssignment( 1, DOTA_TEAM_GOODGUYS )
 end
 
 function DevDebugMenu:OnClickDebugButton3()
-    print("Assign to BadGuys")
-    PlayerResource:SetCustomTeamAssignment( 1, DOTA_TEAM_BADGUYS )
+    print(DevDebugMenu:GetDebuButtonLabelByFunctionName('OnClickDebugButton3'))
+
+    -- PlayerResource:SetCustomTeamAssignment( 1, DOTA_TEAM_BADGUYS )
 end
 
 function DevDebugMenu:OnClickDebugButton4()
+    print(DevDebugMenu:GetDebuButtonLabelByFunctionName('OnClickDebugButton4'))
+
     local player = PlayerResource:GetPlayer(0)
     local hero = player:GetAssignedHero()
     
     print('Hello world!')
-    
-    -- print('Agility: ' .. hero:GetAgility())
-    if false AND nil.test() then 
-        print('Strength: ' .. hero:GetStrength())
-    end
 end
 
 function DevDebugMenu:OnClickDebugButton5()
+    print(DevDebugMenu:GetDebuButtonLabelByFunctionName('OnClickDebugButton5'))
+
     local player = PlayerResource:GetPlayer(0)
     local hero = player:GetAssignedHero()
-    --print(player:GetAssignedHero())
-    --hero:RespawnUnit()
-
-    -- print(PlayerResource:IsValidTeamPlayer(1))
-    -- PlayerResource:ReplaceHeroWith(1,'npc_dota_hero_axe', 1000, 100)
-
-    -- local number = PlayerResource:GetSteamID(0)
-    local flag = DOTA_ABILITY_BEHAVIOR_AOE
-
-    local ability = hero:GetAbilityByIndex(0)
-
-    print("Raw: ")
-    print(ability:GetAbilityName())
-    print(ability:GetBehavior())
-    print(bit.band(ability:GetBehavior(), DOTA_ABILITY_BEHAVIOR_AOE) > 0)
+    -- local ability = hero:GetAbilityByIndex(0)
 end
 
 

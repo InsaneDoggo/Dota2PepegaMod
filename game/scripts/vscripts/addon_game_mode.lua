@@ -9,7 +9,9 @@ _G.USE_DEBUG = true
 
 require('util')
 require('libraries/player_resource')
+require('libraries/timers')
 require('events')
+require('dev_debug_menu')
 
 function Precache( context )
 	--[[
@@ -41,6 +43,8 @@ function CAddonTemplateGameMode:InitGameMode()
 	GameRules:SetStrategyTime(0.0)
 
 	ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(CAddonTemplateGameMode, 'OnGameRulesStateChange'), self)
+
+	DevDebugMenu:Init()
 end
 
 -- Evaluate the state of the game
